@@ -15,7 +15,7 @@ const CONFIG = {
     scale: 1.1,
     // Desktop values above remain unchanged.
     // Generic mobile tweak point: adjust vertical placement of the whole bubble on phones.
-    mobileTop: "58%",
+    mobileTop: "40%",
     mobileScale: 0.96,
     // iPhone 17 Safari (402 x 874 pt) targeted override.
     mobileSafariTop: "52svh",
