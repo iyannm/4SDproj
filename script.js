@@ -14,14 +14,14 @@ const CONFIG = {
     top: "40%",
     scale: 1.1,
     // Mobile-only vertical tweak (single top control).
-    mobileTop: "30%"
+    mobileTop: "35%"
   },
   mailIconPosition: {
     left: "50%",
     bottom: "45%",
     scale: 1,
     // Mobile-only vertical tweak (single top control).
-    mobileTop: "40%"
+    mobileTop: "45%"
   },
   pageAssets: [
     ["assets/page1.png"],
