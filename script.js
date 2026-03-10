@@ -7,16 +7,23 @@
   - Ending text: CONFIG.finalMessage + CONFIG.finalMessagePosition
   - Animation intensity: CONFIG.effects + CONFIG.fireworks
 */
+
 const CONFIG = {
   mailBubblePosition: {
-    left: "47.7%",
+    left: "50%",
     top: "40%",
-    scale: 1.1
+    scale: 1.1,
+    // Mobile tweak point: adjust vertical placement of the whole bubble on phones.
+    mobileTop: "58%",
+    mobileScale: 0.96
   },
   mailIconPosition: {
     left: "50%",
     bottom: "45%",
-    scale: 1
+    scale: 1,
+    // Mobile tweak point: use top anchor (not bottom) so icon tracks bubble cleanly on short/tall phones.
+    mobileTop: "46%",
+    mobileScale: 0.96
   },
   pageAssets: [
     ["assets/page1.png"],
@@ -26,7 +33,7 @@ const CONFIG = {
   ],
   finalMessage: "Happy 4 Years Love!",
   finalMessagePosition: {
-    left: "47.5%",
+    left: "50%",
     top: "25%",
     scale: 1,
     align: "center"
@@ -134,9 +141,13 @@ document.addEventListener("DOMContentLoaded", () => {
     root.style.setProperty("--mail-bubble-left", bubblePosition.left || "50%");
     root.style.setProperty("--mail-bubble-top", bubblePosition.top || "70%");
     root.style.setProperty("--mail-bubble-scale", String(bubblePosition.scale ?? 1));
+    root.style.setProperty("--mail-mobile-bubble-top", bubblePosition.mobileTop || bubblePosition.top || "58%");
+    root.style.setProperty("--mail-mobile-bubble-scale", String(bubblePosition.mobileScale ?? bubblePosition.scale ?? 1));
     root.style.setProperty("--mail-icon-left", iconPosition.left || "50%");
     root.style.setProperty("--mail-icon-bottom", iconPosition.bottom || "28%");
     root.style.setProperty("--mail-icon-scale", String(iconPosition.scale ?? 1));
+    root.style.setProperty("--mail-mobile-icon-top", iconPosition.mobileTop || "46%");
+    root.style.setProperty("--mail-mobile-icon-scale", String(iconPosition.mobileScale ?? iconPosition.scale ?? 1));
     root.style.setProperty("--finale-message-left", finalPosition.left || "50%");
     root.style.setProperty("--finale-message-top", finalPosition.top || "50%");
     root.style.setProperty("--finale-message-scale", String(finalPosition.scale ?? 1));

@@ -16,6 +16,10 @@
   --mail-icon-left: 50%;
   --mail-icon-bottom: 28%;
   --mail-icon-scale: 1;
+  --mail-mobile-bubble-top: 58%;
+  --mail-mobile-bubble-scale: 0.96;
+  --mail-mobile-icon-top: 46%;
+  --mail-mobile-icon-scale: 0.96;
   --finale-message-left: 50%;
   --finale-message-top: 50%;
   --finale-message-scale: 1;
@@ -548,6 +552,23 @@ button {
   to {
     opacity: 0;
     transform: translateY(1rem) scale(0.985);
+  }
+}
+
+@media (max-width: 48rem) {
+  /* Mobile vertical tune: adjust these vars in script.js (mobileTop/mobileScale) or here for quick testing. */
+  .mail-zone {
+    left: 50%;
+    top: var(--mail-mobile-bubble-top);
+    transform: translate(-50%, -50%) scale(var(--mail-mobile-bubble-scale));
+  }
+
+  /* Mobile uses top anchor to match bubble anchoring and avoid top/bottom mixing. */
+  .mail-icon {
+    left: 50%;
+    top: var(--mail-mobile-icon-top);
+    bottom: auto;
+    transform: translate(-50%, -50%) scale(var(--mail-mobile-icon-scale));
   }
 }
 
