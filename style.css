@@ -17,13 +17,7 @@
   --mail-icon-bottom: 28%;
   --mail-icon-scale: 1;
   --mail-mobile-bubble-top: 58%;
-  --mail-mobile-bubble-scale: 0.96;
   --mail-mobile-icon-top: 46%;
-  --mail-mobile-icon-scale: 0.96;
-  --mail-iphone-bubble-top: 52svh;
-  --mail-iphone-bubble-scale: 0.94;
-  --mail-iphone-icon-top: 42%;
-  --mail-iphone-icon-scale: 0.94;
   --finale-message-left: 50%;
   --finale-message-top: 50%;
   --finale-message-scale: 1;
@@ -564,11 +558,11 @@ button {
 }
 
 @media (max-width: 48rem) {
-  /* Generic mobile vertical tune: update vars in script.js for quick adjustments. */
+  /* Mobile-only vertical controls: tune --mail-mobile-bubble-top / --mail-mobile-icon-top. */
   .mail-zone {
     left: 50%;
     top: var(--mail-mobile-bubble-top);
-    transform: translate(-50%, -50%) scale(var(--mail-mobile-bubble-scale));
+    transform: translate(-50%, -50%) scale(var(--mail-bubble-scale));
   }
 
   /* Mobile uses top anchor to match bubble anchoring and avoid top/bottom mixing. */
@@ -576,29 +570,7 @@ button {
     left: 50%;
     top: var(--mail-mobile-icon-top);
     bottom: auto;
-    transform: translate(-50%, -50%) scale(var(--mail-mobile-icon-scale));
-  }
-}
-
-@media (max-width: 430px) and (max-height: 900px) {
-  /* Safari iPhone 17 override (402 x 874 pt): tweak top/scale vars only. */
-  .mail-zone {
-    left: 50%;
-    top: calc(
-      var(--mail-iphone-bubble-top)
-      + (env(safe-area-inset-top, 0px) * 0.18)
-      - (env(safe-area-inset-bottom, 0px) * 0.06)
-    );
-    transform: translateX(-50%) scale(var(--mail-iphone-bubble-scale));
-    animation: none;
-  }
-
-  /* Same top-anchor system on mobile Safari for consistent bubble/icon grouping. */
-  .mail-icon {
-    left: 50%;
-    top: var(--mail-iphone-icon-top);
-    bottom: auto;
-    transform: translateX(-50%) scale(var(--mail-iphone-icon-scale));
+    transform: translate(-50%, -50%) scale(var(--mail-icon-scale));
   }
 }
 
