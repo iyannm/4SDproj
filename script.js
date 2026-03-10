@@ -18,7 +18,7 @@ const CONFIG = {
     mobileTop: "40%",
     mobileScale: 0.96,
     // iPhone 17 Safari (402 x 874 pt) targeted override.
-    mobileSafariTop: "52svh",
+    mobileSafariTop: "25svh",
     mobileSafariScale: 0.94
   },
   mailIconPosition: {
