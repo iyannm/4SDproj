@@ -13,17 +13,24 @@ const CONFIG = {
     left: "50%",
     top: "40%",
     scale: 1.1,
-    // Mobile tweak point: adjust vertical placement of the whole bubble on phones.
+    // Desktop values above remain unchanged.
+    // Generic mobile tweak point: adjust vertical placement of the whole bubble on phones.
     mobileTop: "58%",
-    mobileScale: 0.96
+    mobileScale: 0.96,
+    // iPhone 17 Safari (402 x 874 pt) targeted override.
+    mobileSafariTop: "52svh",
+    mobileSafariScale: 0.94
   },
   mailIconPosition: {
     left: "50%",
     bottom: "45%",
     scale: 1,
-    // Mobile tweak point: use top anchor (not bottom) so icon tracks bubble cleanly on short/tall phones.
+    // Generic mobile tweak point: use top anchor (not bottom) so icon tracks bubble cleanly on short/tall phones.
     mobileTop: "46%",
-    mobileScale: 0.96
+    mobileScale: 0.96,
+    // iPhone 17 Safari targeted override.
+    mobileSafariTop: "42%",
+    mobileSafariScale: 0.94
   },
   pageAssets: [
     ["assets/page1.png"],
@@ -133,6 +140,17 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFireworksCanvas();
   updateAudioButton();
 
+  function normalizePercentValue(value, fallback) {
+    if (value === undefined || value === null || value === "") {
+      return fallback;
+    }
+    const normalized = String(value).trim();
+    if (/^-?\d+(\.\d+)?$/.test(normalized)) {
+      return `${normalized}%`;
+    }
+    return normalized;
+  }
+
   function applyConfig() {
     const bubblePosition = CONFIG.mailBubblePosition || CONFIG.mailPosition || {};
     const iconPosition = CONFIG.mailIconPosition || {};
@@ -143,13 +161,17 @@ document.addEventListener("DOMContentLoaded", () => {
     root.style.setProperty("--mail-bubble-scale", String(bubblePosition.scale ?? 1));
     root.style.setProperty("--mail-mobile-bubble-top", bubblePosition.mobileTop || bubblePosition.top || "58%");
     root.style.setProperty("--mail-mobile-bubble-scale", String(bubblePosition.mobileScale ?? bubblePosition.scale ?? 1));
+    root.style.setProperty("--mail-iphone-bubble-top", bubblePosition.mobileSafariTop || "52svh");
+    root.style.setProperty("--mail-iphone-bubble-scale", String(bubblePosition.mobileSafariScale ?? bubblePosition.mobileScale ?? bubblePosition.scale ?? 1));
     root.style.setProperty("--mail-icon-left", iconPosition.left || "50%");
     root.style.setProperty("--mail-icon-bottom", iconPosition.bottom || "28%");
     root.style.setProperty("--mail-icon-scale", String(iconPosition.scale ?? 1));
     root.style.setProperty("--mail-mobile-icon-top", iconPosition.mobileTop || "46%");
     root.style.setProperty("--mail-mobile-icon-scale", String(iconPosition.mobileScale ?? iconPosition.scale ?? 1));
-    root.style.setProperty("--finale-message-left", finalPosition.left || "50%");
-    root.style.setProperty("--finale-message-top", finalPosition.top || "50%");
+    root.style.setProperty("--mail-iphone-icon-top", iconPosition.mobileSafariTop || iconPosition.mobileTop || "42%");
+    root.style.setProperty("--mail-iphone-icon-scale", String(iconPosition.mobileSafariScale ?? iconPosition.mobileScale ?? iconPosition.scale ?? 1));
+    root.style.setProperty("--finale-message-left", normalizePercentValue(finalPosition.left, "50%"));
+    root.style.setProperty("--finale-message-top", normalizePercentValue(finalPosition.top, "50%"));
     root.style.setProperty("--finale-message-scale", String(finalPosition.scale ?? 1));
     root.style.setProperty("--finale-message-align", finalPosition.align || "center");
     root.style.setProperty(

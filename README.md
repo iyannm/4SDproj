@@ -47,6 +47,18 @@ Then open: `http://localhost:8080`
 4. Save and wait for GitHub Pages to publish.
 5. Use the generated URL in your QR code.
 
+### Quick Redeploy Checklist
+
+1. Commit your changes:
+   - `git add -A`
+   - `git commit -m "Update mobile Safari layout"`
+2. Push to your Pages source branch (example: `main`):
+   - `git push origin main`
+3. Confirm the Pages build:
+   - GitHub repo -> `Actions` -> check `pages build and deployment` is successful.
+4. Verify on mobile Safari:
+   - Open the GitHub Pages URL on iPhone Safari and confirm layout in portrait.
+
 ## 3. Replace Assets
 
 Put replacement files in `assets/` using the same filenames:
