@@ -14,7 +14,7 @@ const CONFIG = {
     top: "40%",
     scale: 1.1,
     // Mobile-only vertical tweak (single top control).
-    mobileTop: "40%"
+    mobileTop: "37%"
   },
   mailIconPosition: {
     left: "50%",
