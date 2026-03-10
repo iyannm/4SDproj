@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="A romantic anniversary mini website with a magical cozy vibe.">
+  <title>Our Anniversary</title>
+  <link rel="preload" href="font/svbold.otf.woff2/svbold.otf.woff2" as="font" type="font/woff2">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app" class="app">
+    <div class="shared-backdrop" aria-hidden="true">
+      <img id="sharedBg" class="shared-bg" src="assets/bg.png" alt="Romantic landscape background">
+      <div class="overlay-gradient"></div>
+      <div class="vignette"></div>
+    </div>
+
+    <section id="landingScene" class="scene scene-landing active" aria-label="Landing scene">
+      <div id="starsLayer" class="effects-layer stars-layer" aria-hidden="true"></div>
+      <div id="leavesLayer" class="effects-layer leaves-layer" aria-hidden="true"></div>
+
+      <button id="mailZone" class="mail-zone" type="button" aria-label="Open the love letter">
+        <img id="mailBubble" class="mail-bubble" src="assets/mail-bubble.png" alt="Unread mail bubble">
+        <img id="mailIcon" class="mail-icon" src="assets/mail-icon.png" alt="Letter icon">
+        <span id="mailFallback" class="mail-fallback" hidden>Open Letter</span>
+        <span class="mail-glow" aria-hidden="true"></span>
+        <span class="mail-cta"></span>
+      </button>
+
+      <button id="audioToggle" class="audio-toggle" type="button" aria-pressed="true" aria-label="Toggle sound">
+        Sound: On
+      </button>
+    </section>
+
+    <section id="letterScene" class="scene scene-letter" aria-label="Letter pages">
+      <div id="letterShell" class="letter-shell">
+        <div class="page-stage" id="pageStage">
+          <img id="pageImage" class="page-image" alt="Love letter page">
+          <div id="pageFallback" class="page-fallback" hidden>
+            <p class="fallback-title">Love Note</p>
+            <p class="fallback-sub">This page image could not be loaded.</p>
+          </div>
+        </div>
+
+        <div class="page-controls">
+          <button id="prevBtn" class="control-btn" type="button">Previous</button>
+          <span id="pageIndicator" class="page-indicator" aria-live="polite">1 / 4</span>
+          <button id="nextBtn" class="control-btn" type="button">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="finaleScene" class="scene scene-finale" aria-label="Final celebration">
+      <canvas id="fireworksCanvas" class="fireworks-canvas" aria-hidden="true"></canvas>
+
+      <div class="finale-content">
+        <h1 id="finaleMessage">Happy 4 Years Love!</h1>
+        <button id="replayBtn" class="control-btn replay-btn" type="button">Replay</button>
+      </div>
+    </section>
+  </main>
+
+  <audio id="bgMusic" src="assets/bg-music.mp3" preload="auto" loop></audio>
+  <audio id="openMailSound" src="assets/open-mail.mp3" preload="auto"></audio>
+  <audio id="finaleMusic" src="assets/finale-music.mp3" preload="auto" loop></audio>
+
+  <noscript>
+    <div class="noscript-note">This page needs JavaScript enabled for the full experience.</div>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>
